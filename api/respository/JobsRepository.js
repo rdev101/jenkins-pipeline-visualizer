@@ -1,20 +1,38 @@
+const jenkinsClient = require('../jenkins/JenkinsClient')
+const JobEntity = require('../model/JobEntity')
+
 class JobsRepository {
+  
   getAllJobs() {
-    const data = [
-      {
-        id: "job1",
-        downstream: null
-      },
-      {
-        id: "job2",
-        downstream: {
-          id: "job2:subjob1",
-          downstream: null
-        }
-      }
-    ];
-    return data;
+    return new Promise((resolve, reject) => {
+      jenkinsClient.queryJobs().then(
+          response => {
+            var responseData = {
+              jobs: new Array()
+            }
+            response.data.jobs.forEach(element => {
+              responseData.jobs.push(new JobEntity(element.name, element.url));
+            });
+            resolve(responseData);
+          }
+        ).catch(error => {
+          reject(error);
+        })
+    });
   }
+
+  getAllJobRelationMap(){
+    return new Promise((resolve, reject) => {
+      getAllJobs().then(
+          data => {
+            resolve(data);
+          }
+        ).catch(error => {
+          reject(error);
+        })
+    });
+  }
+
 }
 
 module.exports = JobsRepository;

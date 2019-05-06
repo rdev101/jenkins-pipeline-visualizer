@@ -4,7 +4,12 @@ var JobsRepo = require("../respository/JobsRepository");
 var jobsRepo = new JobsRepo();
 
 router.get("/", function(req, res) {
-  res.json(jobsRepo.getAllJobs());
+  jobsRepo.getAllJobs().then(data => res.send(data))
+  .catch(error => {
+    console.log(error)
+    res.status(500)
+    res.json({message: error.message});
+  })
 });
 
 module.exports = router;

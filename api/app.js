@@ -4,7 +4,6 @@ const jobs = require("./routes/jobs");
 
 const app = express();
 app.use((req, res, next) => {
-  console.log("Time: ", Date.now());
   next();
 });
 
