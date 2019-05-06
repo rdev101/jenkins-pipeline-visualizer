@@ -1,5 +1,12 @@
 {
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  },
   "scripts": {
-    "start": "@echo Not Implemented"
+    "start:dev": "nodemon app.js",
+    "start": "node app.js"
   }
 }

@@ -3,8 +3,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -24,9 +22,6 @@ const styles = {
 class TopMenuPanel extends Component {
   constructor(props) {
     super(props);
-    this.propTypes = {
-      classes: PropTypes.object.isRequired
-    };
   }
 
   render() {
@@ -35,13 +30,13 @@ class TopMenuPanel extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
+            {/* <IconButton
               className={classes.menuButton}
               color="inherit"
               aria-label="Menu"
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
             <Typography variant="h6" color="inherit" className={classes.grow}>
               {this.props.name}
             </Typography>
@@ -52,5 +47,9 @@ class TopMenuPanel extends Component {
     );
   }
 }
+
+TopMenuPanel.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(TopMenuPanel);

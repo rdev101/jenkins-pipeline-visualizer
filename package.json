@@ -7,7 +7,8 @@
     "install:web": "cd web && npm install",
     "start": "run-p start:api",
     "start:api": "npm run start --prefix api",
-    "start:web:dev": "npm run start --prefix web",
+    "start:api:dev": "npm run start:dev --prefix api",
+    "start:web:dev": "npm run start:dev --prefix web",
     "build": "run-p build:web",
     "build:web": "cd web && npm run build"
   },
